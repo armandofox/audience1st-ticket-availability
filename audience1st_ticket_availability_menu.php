@@ -2,8 +2,8 @@
 add_action('admin_menu', 'audience1st_ticket_availability_setup_menu');
  
 function audience1st_ticket_availability_setup_menu() {
-    add_options_page( __('Audience1st Ticket Availability Settings', 'audience1st-ticket-availability-config'),
-                      __('Audience1st Ticket Availability', 'audience1st-ticket-availability-config'),
+    add_options_page( __('Audience1st Ticket Availability Settings', 'audience1st-ticket-availability),
+                      __('Audience1st Ticket Availability', 'audience1st-ticket-availability'),
                       'manage_options', 'audience1st-ticket-availability-config', 'display_options' );
 }
  
@@ -28,7 +28,7 @@ function display_options() {
     $a1_num_shows_val = get_option($a1_num_shows);
 
     echo '<div class="wrap">';
-    echo '<h2>' . __('Audience1st Ticket Availability: Configuration', 'audience1st-ticket-availability-config')  . '</h2>';
+    echo '<h2>' . __('Audience1st Ticket Availability: Configuration', 'audience1st-ticket-availability')  . '</h2>';
     
     update_config_values_if_form_submitted();
     echo <<<endofsettingspage
