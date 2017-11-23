@@ -1,12 +1,21 @@
 <?php 
     /*
-    Plugin Name: Audience1 RSS
-    Plugin URI: http://www.kanopistudios.com
-    Description: Plugin for displaying events pulled from Audience1
+    Plugin Name: Audience1st Ticket Availability
+    Plugin URI: https://github.com/armandofox/audience1st-ticket-availability
+    Donate link: http://www.audience1st.com
+    Description: Plugin for displaying ticket availability based on RSS feeds from Audience1st
     Author: Kanopi Studios
     Version: 1.0
     Author URI: http://www.kanopistudios.com
+    License URI: https://www.gnu.org/licenses/gpl-2.0.html
+    License: GPL2
+    Text Domain: a1-rss
+    Domain path: /languages
     */
+?>
+
+<?php 
+  defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 ?>
 
 <?php
@@ -20,16 +29,16 @@ function safely_add_stylesheet() {
     wp_enqueue_style( 'prefix-style', plugins_url('style.css', __FILE__) );
 }
 
-class audienceOne_rss extends WP_Widget {
+class audience1st_ticket_availability extends WP_Widget {
  
 	//process the new widget
 	public function __construct() {
 		$option = array(
-			'classname' => 'audienceOne_rss',
+			'classname' => 'audience1st_ticket_availability',
 			'description' => 'RPG - X-Force Newsletter Box'
 		);
 
-		$this->WP_Widget('audienceOne_rss', 'Audience1 RSS Feed', $option);
+		$this->WP_Widget('audience1st_ticket_availability', 'Audience1 RSS Feed', $option);
 
 	}
  
@@ -112,8 +121,8 @@ class audienceOne_rss extends WP_Widget {
  
 }
  
-add_action('widgets_init', 'audienceOne_rss_register');
-function audienceOne_rss_register() {
-	register_widget('audienceOne_rss');
+add_action('widgets_init', 'audience1st_ticket_availability_register');
+function audience1st_ticket_availability_register() {
+	register_widget('audience1st_ticket_availability');
 }
 ?>
