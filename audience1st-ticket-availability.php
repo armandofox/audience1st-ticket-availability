@@ -16,6 +16,10 @@
   defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 /**
+ * Appearance configuration
+ */
+require_once('audience1st_ticket_availability_menu.php');
+/**
  * Add stylesheet to the page
  */
 add_action( 'wp_enqueue_scripts', 'safely_add_stylesheet' );
@@ -26,6 +30,9 @@ function safely_add_stylesheet() {
 
 class audience1st_ticket_availability extends WP_Widget {
  
+    const A1_URL = 'audience1st_ticket_rss_url';
+    const A1_NUM_SHOWS = 'audience1st_ticket_rss_num_shows';
+    
 	//process the new widget
 	public function __construct() {
 		$option = array(
@@ -39,7 +46,8 @@ class audience1st_ticket_availability extends WP_Widget {
  
 	//build the widget settings form
 	function form($instance) {
-		echo '<p>Display Tickets for the next 5 shows</p>';
+		$num_shows = get_option(audience1st_ticket_availability::A1_NUM_SHOWS);
+		echo '<p>Display Tickets for the next ' . $num_shows . ' shows</p>';
 	}
 
 	//save the widget settings
@@ -61,8 +69,9 @@ class audience1st_ticket_availability extends WP_Widget {
 				echo '</div>';
 
 			$rss = new DOMDocument();
-			$rss->load('https://www.audience1st.com/altarena/rss/availability'); // Set the blog RSS feed url here
-
+			$url = get_option(audience1st_ticket_availability::A1_URL) . '/rss/availability';
+			$rss->load($url); // Set the blog RSS feed url here
+			$num_shows = get_option(audience1st_ticket_availability::A1_NUM_SHOWS);
 			$i = 1;
 			foreach ($rss->getElementsByTagName('item') as $node) {
 				$item = array ( 
@@ -97,7 +106,7 @@ class audience1st_ticket_availability extends WP_Widget {
 					}
 				echo '</div>';
 
-				if ($i++ == 10) break;
+				if ($i++ == $num_shows) break;
 			}
 			echo '</div>';
 			echo '<div class="ticketRSS--footer">';
