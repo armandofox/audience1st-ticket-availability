@@ -2,7 +2,7 @@
 add_action('admin_menu', 'audience1st_ticket_availability_setup_menu');
  
 function audience1st_ticket_availability_setup_menu() {
-    add_options_page( __('Audience1st Ticket Availability Settings', 'audience1st-ticket-availability),
+    add_options_page( __('Audience1st Ticket Availability Settings', 'audience1st-ticket-availability'),
                       __('Audience1st Ticket Availability', 'audience1st-ticket-availability'),
                       'manage_options', 'audience1st-ticket-availability-config', 'display_options' );
 }
