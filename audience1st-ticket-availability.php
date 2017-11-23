@@ -12,13 +12,8 @@
     Text Domain: a1-rss
     Domain path: /languages
     */
-?>
 
-<?php 
   defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-?>
-
-<?php
 
 /**
  * Add stylesheet to the page
@@ -35,10 +30,10 @@ class audience1st_ticket_availability extends WP_Widget {
 	public function __construct() {
 		$option = array(
 			'classname' => 'audience1st_ticket_availability',
-			'description' => 'RPG - X-Force Newsletter Box'
+			'description' => 'Audience1st ticket availability thermometers for next several performances.'
 		);
 
-		$this->WP_Widget('audience1st_ticket_availability', 'Audience1 RSS Feed', $option);
+		$this->WP_Widget('audience1st_ticket_availability', 'Audience1st Ticket Availability', $option);
 
 	}
  
