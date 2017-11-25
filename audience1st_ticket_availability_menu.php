@@ -36,10 +36,11 @@ function display_options() {
 <form name="a1_ticket_availability_form" method="post" action="">
   <input type="hidden" name="_submit" value="_submit">
   <p>Audience1st base URL (for example: <code>http://www.audience1st.com/your-theater-name</code>):</p>
-  <input type="text" name="$a1_url" size="30" value="${a1_url_val}">
+  <input type="text" name="$a1_url" size="60" value="${a1_url_val}">
   <hr/>
-  <p>Number of performances to display availability for:</p>
-  <input type="text" name="$a1_num_shows" size="3" value="${a1_num_shows_val}">
+  <p>Number of performances to display availability for:
+    <input type="text" name="$a1_num_shows" size="3" value="${a1_num_shows_val}">
+  </p>
   <p class="submit">
     <input type="submit" name="Save Changes" class="button-primary" value="Save Changes">
   </p>

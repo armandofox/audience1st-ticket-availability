@@ -8,6 +8,7 @@ Version: 1.0.1
 Author URI: https://github.com/armandofox
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 License: GPL2
+Tags: theater, theatre, tickets, ticketing
 Text Domain: audience1st-ticket-availability
 Domain path: /languages
 
