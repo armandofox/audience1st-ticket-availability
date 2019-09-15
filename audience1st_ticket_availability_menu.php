@@ -10,7 +10,7 @@ function audience1st_ticket_availability_setup_menu() {
 function update_config_values_if_form_submitted() {
     if (isset($_POST['_submit']) && $_POST['_submit']=='_submit') {
         foreach (array(audience1st_ticket_availability::A1_URL, audience1st_ticket_availability::A1_NUM_SHOWS) as $opt) {
-                update_option($opt, $_POST[$opt]);
+            update_option($opt, $_POST[$opt]);
         }
         echo '<div class="updated"><p>Settings saved.</p></div>';
     }
@@ -19,7 +19,7 @@ function update_config_values_if_form_submitted() {
 function display_options() {
     //must check that the user has the required capability 
     if (!current_user_can('manage_options'))  {
-      wp_die( __('You do not have sufficient permissions to access this page.') );
+        wp_die( __('You do not have sufficient permissions to access this page.') );
     }
     // settable options
     $a1_url = audience1st_ticket_availability::A1_URL;
@@ -51,4 +51,3 @@ endofsettingspage;
 }
 
 ?>
-
