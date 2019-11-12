@@ -87,7 +87,7 @@ class audience1st_ticket_availability extends WP_Widget {
         echo '      <div class="ticketRSS--header">Availability</div>';
         echo '    </div>';
 
-        $rss = load_rss_feed(get_option(audience1st_ticket_availability::A1_URL) . '/rss/availability');
+        $rss = load_rss_feed(get_option(audience1st_ticket_availability::A1_URL) . '/rss/availability.rss');
         $num_shows = get_option(audience1st_ticket_availability::A1_NUM_SHOWS);
         $i = 1;
 
