@@ -115,7 +115,7 @@ class audience1st_ticket_availability extends WP_Widget {
             // show Buy link if available
             echo '  <p class="ticketRSS--link">';
             if ($avail == '0') {
-                echo 'Sold out!'
+                echo 'Sold out!';
             } else {
                 echo '<a href="'. nodeItem($node,'link') . '" target="_blank">Buy</a>';
             }
