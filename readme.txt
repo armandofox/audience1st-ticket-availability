@@ -1,7 +1,7 @@
 === Audience1st Ticket Availability ===
-Tested up to:
-Requires PHP:
-Requires at least:
+Tested up to: 5.3
+Requires PHP: 7.2
+Requires at least: 5.3
 Plugin Name: Audience1st Ticket Availability
 Plugin URI: https://github.com/armandofox/audience1st-ticket-availability
 Description: Plugin for displaying ticket availability based on RSS feeds from Audience1st
@@ -15,12 +15,13 @@ License: GPL2
 Tags: theater, theatre, tickets, ticketing
 Text Domain: audience1st-ticket-availability
 Domain path: /languages
+Donate link: https://www.audience1st.com/
 
 Visual indicators of ticket availability for various performances, for theaters using the open source Audience1st system to sell tickets.
 
 == Description ==
 
-If your theater or other venue uses the open source Audience1st software for ticket and subscription sales, and you use WordPress to host your theater's main website, this plugin allows your main website to display real-time ticket availability for upcoming performances.  The plugin retrieves and parses and RSS feed from your theater's Audience1st installation, and renders each performance's availability using a simple "color thermometer" to indicate whether seat availability is excellent (green), limited (yellow), or sold out/nearly sold out (red).  Settings can be customized in the "Appearance" menu of the WordPress admin screen.  Originally authored by Denise Beyer, Shane Rogers, and Anne Stefanyk of Kanopi Studios; with their permission, packaged as a WordPress plugin, distributed, and maintained by Armando Fox. 
+If your theater or other venue uses the open source Audience1st software for ticket and subscription sales, and you use WordPress to host your venue's main website, this plugin allows your site to display real-time ticket availability for upcoming performances.  The plugin retrieves and parses and RSS feed from your theater's Audience1st installation, and renders each performance's availability using a simple "color thermometer" to indicate whether seat availability is excellent (green), limited (yellow), or sold out/nearly sold out (red).  Settings can be customized in the "Appearance" menu of the WordPress admin screen.  Originally authored by Denise Beyer, Shane Rogers, and Anne Stefanyk of Kanopi Studios; with their permission, packaged as a WordPress plugin, distributed, and maintained by Armando Fox. 
 
 == Installation ==
 
@@ -28,9 +29,10 @@ If your theater or other venue uses the open source Audience1st software for tic
 1. Activate the plugin through the 'Plugins' screen in WordPress.
 1. Use the Settings->Audience1st Ticket Availability screen to configure the plugin.
 
-TBD
-
 == Screenshots ==
+
+1. Ticket availability thermometers with default styling.  You can
+modify `style.css` to change the styling.
 
 == Frequently Asked Questions ==
 
