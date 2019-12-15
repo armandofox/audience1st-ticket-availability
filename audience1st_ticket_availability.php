@@ -143,7 +143,10 @@ class audience1st_ticket_availability extends WP_Widget {
  
 }
 
-
+register_activation_hook(__FILE__, 'audience1st_ticket_availability_activation');
+function audience1st_ticket_availability_activation() {
+    update_option('audience1st_ticket_rss_version', '1.0.0');
+}
  
 add_action('widgets_init', 'audience1st_ticket_availability_register');
 function audience1st_ticket_availability_register() {

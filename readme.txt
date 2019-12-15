@@ -7,11 +7,11 @@ Plugin URI: https://github.com/armandofox/audience1st-ticket-availability
 Description: Plugin for displaying ticket availability based on RSS feeds from Audience1st
 Authors: Denise Beyer, Shane Rogers, Anne Stefanyk, Armando Fox
 Contributors: armandofox
-Version: 1.0.1
+Version: 1.0.0
 Stable tag: trunk
 Author URI: https://github.com/armandofox
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-License: GPL2
+License: GPLv2 or later
 Tags: theater, theatre, tickets, ticketing
 Text Domain: audience1st-ticket-availability
 Domain path: /languages
@@ -54,5 +54,5 @@ No upgrades available yet.
 
 == Changelog ==
 
-= 1.0.1 =
+= 1.0.0 =
 * Initial version submitted to plugins directory
