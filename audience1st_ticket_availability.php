@@ -22,9 +22,9 @@ require_once('audience1st_ticket_availability_menu.php');
 /**
  * Add stylesheet to the page
  */
-add_action( 'wp_enqueue_scripts', 'safely_add_stylesheet' );
+add_action( 'wp_enqueue_scripts', 'a1ta_safely_add_stylesheet' );
 
-function safely_add_stylesheet() {
+function a1ta_safely_add_stylesheet() {
     wp_enqueue_style( 'prefix-style', plugins_url('style.css', __FILE__) );
 }
 

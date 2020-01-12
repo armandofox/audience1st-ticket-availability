@@ -26,13 +26,12 @@ If your theater or other venue uses the open source Audience1st software for tic
 == Installation ==
 
 1. Install the plugin through the WordPress plugins screen directly, or if your WordPress site doesn't support that, upload the plugin files to the `/wp-content/plugins/plugin-name` directory.
-1. Activate the plugin through the 'Plugins' screen in WordPress.
-1. Use the Settings->Audience1st Ticket Availability screen to configure the plugin.
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Use the Settings->Audience1st Ticket Availability screen to configure the plugin.
 
 == Screenshots ==
 
-1. Ticket availability thermometers with default styling.  You can
-modify `style.css` to change the styling.
+1. Ticket availability thermometers with default styling.
 
 == Frequently Asked Questions ==
 
