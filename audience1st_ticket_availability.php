@@ -40,7 +40,7 @@ class audience1st_ticket_availability extends WP_Widget {
             'description' => 'Audience1st ticket availability thermometers for next several performances.'
         );
 
-        $this->WP_Widget('audience1st_ticket_availability', 'Audience1st Ticket Availability', $option);
+        parent::__construct('audience1st_ticket_availability', 'Audience1st Ticket Availability', $option);
 
     }
  
@@ -60,9 +60,7 @@ class audience1st_ticket_availability extends WP_Widget {
         preg_match('/^https?:\/\/([^\/:]+)/', $url, $matches);
         $host = $matches[1];
         $opts = array('http' => array('method' => "GET",
-                                      'header' => array('User-Agent' => 'PHP-LibXML-agent',
-                                                        'Accept' => '*/*',
-                                                        'Host' => $host)));
+                                      'header' => "User-Agent: PHP-LibXML-agent\r\n" . "Accept: */*\r\n" . "Host: " . $host . "\r\n"));
         libxml_set_streams_context(stream_context_create($opts));
         $rss = new DOMDocument();
         $rss->load($url);
@@ -71,35 +69,47 @@ class audience1st_ticket_availability extends WP_Widget {
 
     // helper function: given an XML node, extract the text value of a child element
     function nodeItem($node,$item) {
-        return $node->getElementsByTagName($item)->item(0)->nodeValue;
+        return esc_html($node->getElementsByTagName($item)->item(0)->nodeValue);
     }
 
     //display the widget
     function widget($args, $instance) {
-
-        echo '<div class=ticketRSS--widget">';
-        echo '  <h3>Get Tickets</h3>';
-        echo '  <div class="ticketsRSS">';
-        echo '    <div class="ticketRSS--header-row">';
-        echo '      <div class="ticketRSS--header">Description</div>';
-        echo '      <div class="ticketRSS--header">Date</div>';
-        echo '      <div class="ticketRSS--header">Price</div>';
-        echo '      <div class="ticketRSS--header">Availability</div>';
-        echo '    </div>';
-
-        $rss = load_rss_feed(get_option(audience1st_ticket_availability::A1_URL) . '/rss/availability.rss');
+        $rss = $this->load_rss_feed(get_option(audience1st_ticket_availability::A1_URL) .
+                                    '/rss/availability.rss');
         $num_shows = get_option(audience1st_ticket_availability::A1_NUM_SHOWS);
-        $i = 1;
 
+        echo <<<endOfHeaderRow
+        <div class=ticketRSS--widget">
+          <h3>Get Tickets</h3>
+          <div class="ticketRSS">
+            <div class="ticketRSS--header-row">
+              <div class="ticketRSS--header">Show</div>
+              <div class="ticketRSS--header">Date</div>
+              <div class="ticketRSS--header">Price</div>
+              <div class="ticketRSS--header">Availability</div>
+            </div>
+endOfHeaderRow;
+
+        $i = 1;
         foreach ($rss->getElementsByTagName('item') as $node) {
+            $avail = $this->nodeItem($node,'availabilityGrade');
+            $show = $this->nodeItem($node, 'show');
+            $link_url = $this->nodeItem($node, 'link');
+            $showdate = $this->nodeItem($node,'showDateTime'); 
+            $price = $this->nodeItem($node, 'priceRange');
             echo '<div class="ticketRSS--row">';
-            //echo '<p class="ticketRSS--title"><a href="'. $item['link'] . '">' . $item['title'] . '</a></p>';
-            echo '  <p class="ticketRSS--title">' . nodeItem($node,'show')         . '</p>';
-            echo '  <p class="ticketRSS--date">'  . nodeItem($node,'showDateTime') . '</p>';
-            echo '  <p class="ticketRSS--price">' . nodeItem($node,'priceRange')   . '</p>';
+            echo '  <p class="ticketRSS--title">' . $show . '</p>';
+            echo '  <p class="ticketRSS--date">';
+            if ($avail == '0') {  // sold out
+                echo $showdate;
+            } else {
+                echo('<a class="ticketRSS--link" href="' . $link_url . '">' . $showdate . '</a>');
+            }
+            echo '  </p>';
+            echo '  <p class="ticketRSS--price">' . $price . '</p>';
             echo '  <p class="ticketRSS--availability">';
-            switch ($avail = nodeItem($node,'availabilityGrade')) {
-            case '3':
+            switch ($avail) {
+            case '3': 
                 echo '  <span class="availability availability--high"><span></span><span></span><span></span></span>';
                 break;
             case '2':
@@ -112,20 +122,12 @@ class audience1st_ticket_availability extends WP_Widget {
                 echo '  <span class="availability availability--sold-out"></span>';
             }
             echo '  </p>';
-            // show Buy link if available
-            echo '  <p class="ticketRSS--link">';
-            if ($avail == '0') {
-                echo 'Sold out!';
-            } else {
-                echo '<a href="'. nodeItem($node,'link') . '" target="_blank">Buy</a>';
-            }
-            echo "</p></div>";
-
+            echo '</div>  <!-- ticketRSS--row -->';
             if ($i++ == $num_shows) break;
         }
-        echo '</div>';
-        echo '</div>';
-
+        echo ' </div>  <!-- ticketRSS -->';
+		$this->showLegend();
+        echo '</div>   <!-- widget -->';
     }
     // helper function: display 'legend'
     function showLegend() {
@@ -136,7 +138,6 @@ class audience1st_ticket_availability extends WP_Widget {
         echo '    <span>Good</span><span class="availability availability--medium"><span></span><span></span></span>';
         echo '    <span>Limited</span><span class="availability availability--low"><span></span></span>';
         echo '    <span>Sold Out</span><span class="availability availability--sold-out"></span>';
-        //echo '<span>Unavailable</span><span class="availability availability--none"><span></span><span></span><span></span></span>';
         echo '  </div>';
         echo '</div>';
     }
