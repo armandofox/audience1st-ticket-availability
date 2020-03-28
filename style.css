@@ -121,15 +121,13 @@ span.availability {
 	border: 1px solid #b9b9b9;
 	border-radius: 3px;
 	margin-right: 20px;
-	padding: 1px;
 	display: inline-block;
-	height: 15px;
-	width: 51px;
+	height: 3ex;
+	width: 4em;
 }
 span.availability span {
-	background: pink;
-	width: 15px;
-	height: 15px;
+	width: 1em;
+	height: 2ex;
 	margin: 0 1px 0;
 	display: block;
 	float: left;
