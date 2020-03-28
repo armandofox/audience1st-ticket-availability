@@ -82,62 +82,72 @@ class audience1st_ticket_availability extends WP_Widget {
         <div class=ticketRSS--widget">
           <h3>Get Tickets</h3>
           <div class="ticketRSS">
-            <div class="ticketRSS--header-row">
-              <div class="ticketRSS--header">Show</div>
-              <div class="ticketRSS--header">Date</div>
-              <div class="ticketRSS--header">Price</div>
-              <div class="ticketRSS--header">Availability</div>
-            </div>
+            <table class="ticketRSS--table">
+              <thead>
+                <tr>
+                  <th class="ticketRSS--show">Show</th>
+                  <th class="ticketRSS--date">Date</th>
+                  <th class="ticketRSS--price">Price</th>
+                  <th class="ticketRSS--avail">Availability</th>
+                </tr>
+              </thead>
+              <tbody>
 endOfHeaderRow;
-
         $i = 1;
         foreach ($rss->getElementsByTagName('item') as $node) {
-            $avail = $this->nodeItem($node,'availabilityGrade');
-            $show = $this->nodeItem($node, 'show');
-            $link_url = $this->nodeItem($node, 'link');
-            $showdate = $this->nodeItem($node,'showDateTime'); 
-            $price = $this->nodeItem($node, 'priceRange');
-            echo '<div class="ticketRSS--row">';
-            echo '  <p class="ticketRSS--title">' . $show . '</p>';
-            echo '  <p class="ticketRSS--date">';
-            if ($avail == '0') {  // sold out
-                echo $showdate;
-            } else {
-                echo('<a class="ticketRSS--link" href="' . $link_url . '">' . $showdate . '</a>');
-            }
-            echo '  </p>';
-            echo '  <p class="ticketRSS--price">' . $price . '</p>';
-            echo '  <p class="ticketRSS--availability">';
-            switch ($avail) {
-            case '3': 
-                echo '  <span class="availability availability--high"><span></span><span></span><span></span></span>';
-                break;
-            case '2':
-                echo '  <span class="availability availability--medium"><span></span><span></span></span>';
-                break;
-            case '1':
-                echo '  <span class="availability availability--low"><span></span></span>';
-                break;
-            case '0':
-                echo '  <span class="availability availability--sold-out"></span>';
-            }
-            echo '  </p>';
-            echo '</div>  <!-- ticketRSS--row -->';
+            $this->emitOneRow($node);
             if ($i++ == $num_shows) break;
         }
-        echo ' </div>  <!-- ticketRSS -->';
+        echo " </tbody>\n";
+        echo "</table> <!-- ticketRSS--table -->\n";
+        echo "</div>  <!-- ticketRSS -->\n";
 		$this->showLegend();
-        echo '</div>   <!-- widget -->';
+        echo '</div>   <!-- ticketRSS--widget -->';
+    }
+    // helper function: one table row
+    function emitOneRow($node) {
+        $avail = $this->nodeItem($node,'availabilityGrade');
+        $show = $this->nodeItem($node, 'show');
+        $link_url = $this->nodeItem($node, 'link');
+        $showdate = $this->nodeItem($node,'showDateTime'); 
+        $price = $this->nodeItem($node, 'priceRange');
+        echo '<tr>';
+        echo '  <td class="ticketRSS--show">' . $show . "</td>\n";
+        echo '  <td class="ticketRSS--date">';
+        if ($avail == '0') {  // sold out
+            echo $showdate;
+        } else {
+            echo('<a class="ticketRSS--link" href="' . $link_url . '">' . $showdate . '</a>');
+        }
+        echo "  </td>\n";
+        echo "  <td class=\"ticketRSS--price\">$price</td>\n";
+        echo '  <td class="ticketRSS--avail">';
+        echo '    <span class="availability availability--';
+        switch ($avail) {
+        case '3': 
+            echo 'high"><span></span><span></span><span></span></span>';
+            break;
+        case '2':
+            echo 'medium"><span></span><span></span></span>';
+            break;
+        case '1':
+            echo 'low"><span></span></span>';
+            break;
+        case '0':
+            echo 'sold-out"></span>';
+        }
+        echo "  </td>\n";
+        echo "</tr>\n";
     }
     // helper function: display 'legend'
     function showLegend() {
         echo '<div class="ticketRSS--footer">';
         echo '  <h4>Availability</h4>';
         echo '  <div>';
-        echo '    <span>Excellent</span><span class="availability availability--high"><span></span><span></span><span></span></span>';
-        echo '    <span>Good</span><span class="availability availability--medium"><span></span><span></span></span>';
-        echo '    <span>Limited</span><span class="availability availability--low"><span></span></span>';
-        echo '    <span>Sold Out</span><span class="availability availability--sold-out"></span>';
+        echo '    <div class="ticketRSS--legend"><span>Excellent</span><span class="availability availability--high"><span></span><span></span><span></span></span></div>';
+        echo '    <div class="ticketRSS--legend"><span>Good</span><span class="availability availability--medium"><span></span><span></span></span></div>';
+        echo '    <div class="ticketRSS--legend"><span>Limited</span><span class="availability availability--low"><span></span></span></div>';
+        echo '    <div class="ticketRSS--legend"><span>Sold Out</span><span class="availability availability--sold-out"></span></div>';
         echo '  </div>';
         echo '</div>';
     }

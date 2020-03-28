@@ -1,96 +1,28 @@
+/* @override http://armfox.dreamhosters.com/wp-content/plugins/audience1st-ticket-availability-1/style.css?ver=5.3.2 */
+
 .ticketRSS--widget {}
 
-.ticketRSS--widget h3,
-.ticketRSS--widget h4 {
-	color: #631e21;
-}
 .ticketRSS {
-	font-size: 12px;
+	font-size: 75%;
+}
+.ticketRSS--table, .ticketRSS--table tr, .ticketRSS--table  td, .ticketRSS--table th {
+	border:  none !important;
+	border-collapse: collapse;
+}
+.ticketRSS--table td.ticketRSS--price {  /* price */
+	min-width: 5em;
 }
 
-.ticketRSS--header-row {
-	position: relative;
-}
-.ticketRSS--header-row:after {
-	clear: both;
-	content: '';
-	display: block;
-	position: relative;	
+.ticketRSS--table td.ticketRSS--date {
+	text-align: center;
 }
 
-.ticketRSS--header {
-	font-weight: bold;
-}
-
-.ticketRSS--header:nth-child(1) {
-	float: left;
-	width: calc(40% - 70px);
-}
-
-.ticketRSS--header:nth-child(2) {
-	float: left;
-	width: calc(40% - 80px);
-}
-.ticketRSS--header:nth-child(3) {
-	float: left;
-	width: 20%;
-}
-.ticketRSS--header:nth-child(4) {
-	float: left;
-	width: 100px;
-}
-
-.ticketRSS--row {
-	background: #fff;
-	position: relative;
-	padding: 5px 10px;
-}
-
-.ticketRSS--row:nth-child(even) {
+.ticketRSS--table tr:nth-child(even) {
 	background: #eaeaea;
 }
-.ticketRSS--row:after {
-	clear: both;
-	content: '';
-	display: block;
-	position: relative;
-}
-
-.ticketRSS--row p {
-	box-sizing: border-box;
-	padding: 0 10px 0 0;
-	margin: 0;
-}
-.ticketRSS--row p:last-child {
-	padding: 0;
-}
-
-.ticketRSS--title {
-	float: left;
-	width: calc(40% - 70px);
-}
-.ticketRSS--date {
-	float: left;
-	width: calc(40% - 70px);
-}
-.ticketRSS--price {
-	float: left;
-	width: 20%;
-}
-.ticketRSS--availability {
-	float: left;
-	width: 70px;
-}
-.ticketRSS--link {
-	float: left;
-	text-align: right;
-	width: 70px;
-}
-.ticketRSS--link a {}
 
 .ticketRSS--footer {
 	background: #eaeaea;
-	margin-top: 20px;
 	overflow: hidden;
 	padding: 20px 10px 40px;
 	font-size: 12px;
@@ -100,30 +32,26 @@
 .ticketRSS--footer h4 {
 	border-bottom: 1px solid #b9b9b9;
 	font-weight: bold;
-	padding-bottom: 10px;
+	padding-bottom: 1ex;
 }
-
-.ticketRSS--footer span {
-}
-.ticketRSS--footer div > span {
+.ticketRSS--footer div  {
 	display: block;
 	float: left;
 	margin-bottom: 10px;
-	padding: 0 10px 0 0;
-	line-height: 20px;
+	line-height: 2ex;
 }
-.ticketRSS--footer div > span.availability {
-	padding: 1px;
+.ticketRSS--footer span.availability {
+	margin-left: 0.5em;
 }
 
 span.availability {
 	background: #fff;
 	border: 1px solid #b9b9b9;
 	border-radius: 3px;
-	margin-right: 20px;
 	display: inline-block;
 	height: 3ex;
 	width: 4em;
+	padding-top: 0.4ex;
 }
 span.availability span {
 	width: 1em;
@@ -148,51 +76,4 @@ span.availability--sold-out span {}
 span.availability--none span {
 	background: #6E1310;
 	opacity: 0.2;
-}
-
-@media only screen and (max-width: 1100px) {
-	.ticketRSS--footer div > span:nth-child(7) {
-		clear: left;
-	}
-}
-
-@media only screen and (max-width: 720px) {
-	.ticketRSS--footer div > span:nth-child(odd) {
-		clear: left;
-		width: 80px;
-	}
-}
-
-@media only screen and (max-width: 640px) {
-	.ticketRSS--header-row {
-		display: none;
-	}
-	.ticketRSS--title,
-	.ticketRSS--date,
-	.ticketRSS--price,
-	.ticketRSS--availability,
-	.ticketRSS--link {
-		clear: both;
-		float: none;
-		width: 100%;
-	}
-
-	.ticketRSS--title {
-		font-weight: bold;
-	}
-
-	.ticketRSS--date {}
-
-	.ticketRSS--price {}
-
-	.ticketRSS--availability {}
-
-	.ticketRSS--availability:before {
-		content: 'Availability';
-		padding-right: 10px;
-		float: left;
-		line-height: 20px;
-	}
-
-	.ticketRSS--link {}
 }
