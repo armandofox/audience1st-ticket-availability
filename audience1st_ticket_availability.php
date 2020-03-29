@@ -81,7 +81,7 @@ class audience1st_ticket_availability extends WP_Widget {
         echo <<<endOfHeaderRow
         <div class="a1ta-widget">
           <h3>Get Tickets</h3>
-          <div class="ticketRSS">
+          <div class="a1ta-tickets">
             <table class="a1ta-table">
               <thead>
                 <tr>
