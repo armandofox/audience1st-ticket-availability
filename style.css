@@ -1,15 +1,15 @@
-/* @override http://armfox.dreamhosters.com/wp-content/plugins/audience1st-ticket-availability-1/style.css?ver=5.3.2 */
-
-.ticketRSS--widget {}
-
-.ticketRSS {
-	font-size: 75%;
+.ticketRSS--widget {
+	font-size: smaller;
+	overflow: hidden;	
 }
 .ticketRSS--table, .ticketRSS--table tr, .ticketRSS--table  td, .ticketRSS--table th {
 	border:  none !important;
 	border-collapse: collapse;
 }
-.ticketRSS--table td.ticketRSS--price {  /* price */
+.ticketRSS--table thead {
+	background: #f0f0f0;
+}
+.ticketRSS--table td.ticketRSS--price { 
 	min-width: 5em;
 }
 
@@ -18,42 +18,31 @@
 }
 
 .ticketRSS--table tr:nth-child(even) {
-	background: #eaeaea;
+	background: #f0f0f0;
 }
-
-.ticketRSS--footer {
-	background: #eaeaea;
-	overflow: hidden;
-	padding: 20px 10px 40px;
-	font-size: 12px;
-	line-height: 15px;
-}
-
 .ticketRSS--footer h4 {
 	border-bottom: 1px solid #b9b9b9;
-	font-weight: bold;
-	padding-bottom: 1ex;
+	padding-bottom: 0.2ex;
+	margin-bottom: 0;
 }
-.ticketRSS--footer div  {
-	display: block;
-	float: left;
-	margin-bottom: 10px;
-	line-height: 2ex;
+table.ticketRSS--legend {
+	background: #f0f0f0;
+	width:  100%;
 }
-.ticketRSS--footer span.availability {
-	margin-left: 0.5em;
+table.ticketRSS--legend, table.ticketRSS--legend tr, table.ticketRSS--legend td {
+	border:  none;
+	border-collapse: collapse;
 }
-
-span.availability {
+.availability {
 	background: #fff;
 	border: 1px solid #b9b9b9;
 	border-radius: 3px;
 	display: inline-block;
 	height: 3ex;
-	width: 4em;
+	width: 3.75em;
 	padding-top: 0.4ex;
 }
-span.availability span {
+.availability span {
 	width: 1em;
 	height: 2ex;
 	margin: 0 1px 0;
@@ -61,19 +50,19 @@ span.availability span {
 	float: left;
 }
 
-span.availability--high span {
+.availability--high span {
 	background: green;
 }
 
-span.availability--medium span {
+.availability--medium span {
 	background: #B49658;
 }
 
-span.availability--low span {
+.availability--low span {
 	background: #6E1310;
 }
-span.availability--sold-out span {}
-span.availability--none span {
+.availability--sold-out span {}
+.availability--none span {
 	background: #6E1310;
 	opacity: 0.2;
 }

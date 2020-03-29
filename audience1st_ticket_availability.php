@@ -79,7 +79,7 @@ class audience1st_ticket_availability extends WP_Widget {
         $num_shows = get_option(audience1st_ticket_availability::A1_NUM_SHOWS);
 
         echo <<<endOfHeaderRow
-        <div class=ticketRSS--widget">
+        <div class="ticketRSS--widget">
           <h3>Get Tickets</h3>
           <div class="ticketRSS">
             <table class="ticketRSS--table">
@@ -121,34 +121,42 @@ endOfHeaderRow;
         }
         echo "  </td>\n";
         echo "  <td class=\"ticketRSS--price\">$price</td>\n";
-        echo '  <td class="ticketRSS--avail">';
-        echo '    <span class="availability availability--';
-        switch ($avail) {
+        echo '  <td class="ticketRSS--avail">' .  $this->showAvailability($avail) . "  </td>\n";
+        echo "</tr>\n";
+    }
+    // helper function: display availability box
+    function showAvailability($val) {
+        $str = '    <div class="availability availability--';
+        switch($val) {
         case '3': 
-            echo 'high"><span></span><span></span><span></span></span>';
+            $str .= 'high"><span></span><span></span><span></span>';
             break;
         case '2':
-            echo 'medium"><span></span><span></span></span>';
+            $str .= 'medium"><span></span><span></span>';
             break;
         case '1':
-            echo 'low"><span></span></span>';
+            $str .= 'low"><span></span>';
             break;
         case '0':
-            echo 'sold-out"></span>';
+            $str .= 'sold-out">';
         }
-        echo "  </td>\n";
-        echo "</tr>\n";
+        $str .= '</div>';
+        return($str);
     }
     // helper function: display 'legend'
     function showLegend() {
         echo '<div class="ticketRSS--footer">';
         echo '  <h4>Availability</h4>';
-        echo '  <div>';
-        echo '    <div class="ticketRSS--legend"><span>Excellent</span><span class="availability availability--high"><span></span><span></span><span></span></span></div>';
-        echo '    <div class="ticketRSS--legend"><span>Good</span><span class="availability availability--medium"><span></span><span></span></span></div>';
-        echo '    <div class="ticketRSS--legend"><span>Limited</span><span class="availability availability--low"><span></span></span></div>';
-        echo '    <div class="ticketRSS--legend"><span>Sold Out</span><span class="availability availability--sold-out"></span></div>';
-        echo '  </div>';
+        echo '  <table class="ticketRSS--legend">';
+        echo '    <tbody>';
+        echo '      <tr>';
+        echo '        <td><span>Excellent</span>' . $this->showAvailability('3') . '</td>';
+        echo '        <td><span>Good</span>' . $this->showAvailability('2') . '</td>';
+        echo '        <td><span>Limited</span>' . $this->showAvailability('1') . '</td>';
+        echo '        <td><span>Sold Out</span>' . $this->showAvailability('0') . '</td>';
+        echo '      </tr>';
+        echo '    </tbody>';
+        echo '  </table>';
         echo '</div>';
     }
  
