@@ -87,8 +87,7 @@ class audience1st_ticket_availability extends WP_Widget {
                 <tr>
                   <th class="ticketRSS--show">Show</th>
                   <th class="ticketRSS--date">Date</th>
-                  <th class="ticketRSS--price">Price</th>
-                  <th class="ticketRSS--avail">Availability</th>
+                  <th colspan="2" class="ticketRSS--price ticketRSS--avail">Price&nbsp;&nbsp;&nbsp;&nbsp;Availability</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,9 +97,9 @@ endOfHeaderRow;
             $this->emitOneRow($node);
             if ($i++ == $num_shows) break;
         }
-        echo " </tbody>\n";
-        echo "</table> <!-- ticketRSS--table -->\n";
-        echo "</div>  <!-- ticketRSS -->\n";
+        echo "      </tbody>\n";
+        echo "    </table> <!-- ticketRSS--table -->\n";
+        echo "  </div>  <!-- ticketRSS -->\n";
 		$this->showLegend();
         echo '</div>   <!-- ticketRSS--widget -->';
     }
