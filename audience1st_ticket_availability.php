@@ -79,15 +79,15 @@ class audience1st_ticket_availability extends WP_Widget {
         $num_shows = get_option(audience1st_ticket_availability::A1_NUM_SHOWS);
 
         echo <<<endOfHeaderRow
-        <div class="ticketRSS--widget">
+        <div class="a1ta-widget">
           <h3>Get Tickets</h3>
           <div class="ticketRSS">
-            <table class="ticketRSS--table">
+            <table class="a1ta-table">
               <thead>
                 <tr>
-                  <th class="ticketRSS--show">Show</th>
-                  <th class="ticketRSS--date">Date</th>
-                  <th colspan="2" class="ticketRSS--price ticketRSS--avail">Price&nbsp;&nbsp;&nbsp;&nbsp;Availability</th>
+                  <th class="a1ta-show">Show</th>
+                  <th class="a1ta-date">Date</th>
+                  <th colspan="2" class="a1ta-price a1ta-avail">Price&nbsp;&nbsp;&nbsp;&nbsp;Availability</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,10 +98,10 @@ endOfHeaderRow;
             if ($i++ == $num_shows) break;
         }
         echo "      </tbody>\n";
-        echo "    </table> <!-- ticketRSS--table -->\n";
+        echo "    </table> <!-- a1ta-table -->\n";
         echo "  </div>  <!-- ticketRSS -->\n";
 		$this->showLegend();
-        echo '</div>   <!-- ticketRSS--widget -->';
+        echo '</div>   <!-- a1ta-widget -->';
     }
     // helper function: one table row
     function emitOneRow($node) {
@@ -111,21 +111,21 @@ endOfHeaderRow;
         $showdate = $this->nodeItem($node,'showDateTime'); 
         $price = $this->nodeItem($node, 'priceRange');
         echo '<tr>';
-        echo '  <td class="ticketRSS--show">' . $show . "</td>\n";
-        echo '  <td class="ticketRSS--date">';
+        echo '  <td class="a1ta-show">' . $show . "</td>\n";
+        echo '  <td class="a1ta-date">';
         if ($avail == '0') {  // sold out
             echo $showdate;
         } else {
-            echo('<a class="ticketRSS--link" href="' . $link_url . '">' . $showdate . '</a>');
+            echo('<a class="a1ta-link" href="' . $link_url . '">' . $showdate . '</a>');
         }
         echo "  </td>\n";
-        echo "  <td class=\"ticketRSS--price\">$price</td>\n";
-        echo '  <td class="ticketRSS--avail">' .  $this->showAvailability($avail) . "  </td>\n";
+        echo "  <td class=\"a1ta-price\">$price</td>\n";
+        echo '  <td class="a1ta-avail">' .  $this->showAvailability($avail) . "  </td>\n";
         echo "</tr>\n";
     }
     // helper function: display availability box
     function showAvailability($val) {
-        $str = '    <div class="availability availability--';
+        $str = '    <div class="a1ta-availability a1ta-';
         switch($val) {
         case '3': 
             $str .= 'high"><span></span><span></span><span></span>';
@@ -144,9 +144,9 @@ endOfHeaderRow;
     }
     // helper function: display 'legend'
     function showLegend() {
-        echo '<div class="ticketRSS--footer">';
+        echo '<div class="a1ta-footer">';
         echo '  <h4>Availability</h4>';
-        echo '  <table class="ticketRSS--legend">';
+        echo '  <table class="a1ta-legend">';
         echo '    <tbody>';
         echo '      <tr>';
         echo '        <td><span>Excellent</span>' . $this->showAvailability('3') . '</td>';

@@ -1,39 +1,39 @@
-.ticketRSS--widget {
+.a1ta-widget {
 	font-size: smaller;
 	overflow: hidden;	
 }
-.ticketRSS--table, .ticketRSS--table tr, .ticketRSS--table  td, .ticketRSS--table th {
+.a1ta-table, .a1ta-table tr, .a1ta-table  td, .a1ta-table th {
 	border:  none !important;
 	border-collapse: collapse;
 }
-.ticketRSS--table thead {
+.a1ta-table thead {
 	background: #f0f0f0;
 }
-.ticketRSS--table td.ticketRSS--price { 
+.a1ta-table td.a1ta-price { 
 	min-width: 5em;
 }
 
-.ticketRSS--table td.ticketRSS--date {
+.a1ta-table td.a1ta-date {
 	text-align: center;
 }
 
-.ticketRSS--table tr:nth-child(even) {
+.a1ta-table tr:nth-child(even) {
 	background: #f0f0f0;
 }
-.ticketRSS--footer h4 {
+.a1ta-footer h4 {
 	border-bottom: 1px solid #b9b9b9;
 	padding-bottom: 0.2ex;
 	margin-bottom: 0;
 }
-table.ticketRSS--legend {
+table.a1ta-legend {
 	background: #f0f0f0;
 	width:  100%;
 }
-table.ticketRSS--legend, table.ticketRSS--legend tr, table.ticketRSS--legend td {
+table.a1ta-legend, table.a1ta-legend tr, table.a1ta-legend td {
 	border:  none;
 	border-collapse: collapse;
 }
-.availability {
+.a1ta-availability {
 	background: #fff;
 	border: 1px solid #b9b9b9;
 	border-radius: 3px;
@@ -42,7 +42,7 @@ table.ticketRSS--legend, table.ticketRSS--legend tr, table.ticketRSS--legend td 
 	width: 3.75em;
 	padding-top: 0.4ex;
 }
-.availability span {
+.a1ta-availability span {
 	width: 1em;
 	height: 2ex;
 	margin: 0 1px 0;
@@ -50,19 +50,19 @@ table.ticketRSS--legend, table.ticketRSS--legend tr, table.ticketRSS--legend td 
 	float: left;
 }
 
-.availability--high span {
+.a1ta-high span {
 	background: green;
 }
 
-.availability--medium span {
+.a1ta-medium span {
 	background: #B49658;
 }
 
-.availability--low span {
+.a1ta-low span {
 	background: #6E1310;
 }
-.availability--sold-out span {}
-.availability--none span {
+.a1ta-sold-out span {}
+.a1ta-none span {
 	background: #6E1310;
 	opacity: 0.2;
 }
