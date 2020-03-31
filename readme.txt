@@ -8,7 +8,7 @@ Description: Plugin for displaying ticket availability based on RSS feeds from A
 Authors: Denise Beyer, Shane Rogers, Anne Stefanyk, Armando Fox
 Contributors: armandofox
 Version: 1.0.0
-Stable tag: trunk
+Stable tag: 1.0.0
 Author URI: https://github.com/armandofox
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 License: GPLv2 or later
